@@ -24,9 +24,6 @@ sudo apt-get install python python-pip mongodb python-sqlalchemy python-bson pyt
 
 sudo apt-get install open-vm-tools
 
-#Add Cuckoo to cuckoo group
-sudo usermod -a -G cuckoo cuckoo
-
 sudo apt-get install gcc make pkg-config libxml2-dev libgnutls-dev libdevmapper-dev libcurl4-gnutls-dev python-dev libpciaccess-dev libxen-dev libnl-3-dev uuid-dev xsltproc libnl-route-3-dev libxml2-utils -y
 
 wget https://libvirt.org/sources/libvirt-4.6.0.tar.xz
@@ -63,17 +60,17 @@ make
 sudo make install
 
 #Yara-python
-sudo pip install yara-python
+sudo -H pip install yara-python
 
 ## SNAPSHOT!! - Pre-MITMProxy
 
-sudo pip install pillow
-sudo pip install distorm3
-sudo pip install pycrypto
+sudo -H pip install pillow
+sudo -H pip install distorm3
+sudo -H pip install pycrypto
 sudo apt-get install python-imaging -y
 
 sudo -H pip install openpyxl
-sudo pip install ujson
+sudo -H pip install ujson
 
 sudo apt-get install mitmproxy -y
 
@@ -90,6 +87,11 @@ sudo -H pip install m2crypto==0.24.0
 sudo apt-get install libguac-client-rdp0 libguac-client-vnc0 libguac-client-ssh0 guacd -y
 
 ### SNAPSHOT - Pre-Cuckoo Install ###
+Add cuckoo User (if not already exists) 
+$sudo adduser cuckoo
+
+#Add Cuckoo to cuckoo group
+sudo usermod -a -G cuckoo cuckoo
 
 #Install Cuckoo in virtualenv
 virtualenv venv
